@@ -98,6 +98,17 @@ jQuery.fn = jQuery.prototype = {
 			return this;
 		}
 
+		// HANDLE: $({'div':{'h1':'builder.js'}});
+		if( jQuery.isArray(selector) || jQuery.isPlainObject(selector) ) {
+			this.context = selector;
+			elem = jQuery.builder(selector);
+			this.length = match = elem.length;
+			while(match--) {
+				this[match] = elem[match];
+			}
+			return this;
+		}
+
 		// Handle HTML strings
 		if ( typeof selector === "string" ) {
 			if ( selector.charAt(0) === "<" && selector.charAt( selector.length - 1 ) === ">" && selector.length >= 3 ) {

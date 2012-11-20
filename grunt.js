@@ -71,6 +71,8 @@ module.exports = function( grunt ) {
 				{ flag: "dimensions", src: "src/dimensions.js", needs: ["css"] },
 				{ flag: "deprecated", src: "src/deprecated.js" },
 
+				{ flag: "builder", src: "src/builder.js" },
+
 				"src/exports.js",
 				"src/outro.js"
 			]
