@@ -98,8 +98,8 @@ jQuery.fn = jQuery.prototype = {
 			return this;
 		}
 
-		// HANDLE: $({'div':{'h1':'builder.js'}});
-		if( jQuery.isArray(selector) || jQuery.isPlainObject(selector) ) {
+		// HANDLE builder objects: $({'div':{'h1':'builder.js'}});
+		if( (jQuery.isArray(selector) && jQuery.isPlainObject(selector[0])) || jQuery.isPlainObject(selector) ) {
 			this.context = selector;
 			elem = jQuery.builder(selector);
 			this.length = match = elem.length;

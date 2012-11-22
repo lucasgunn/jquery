@@ -180,7 +180,7 @@
 		// Text node
 		if (typeof obj !== undef && !isObject) {
 			newEle = document.createTextNode(obj);
-			if(typeof voids[parent.tagName.toLowerCase()] === undef) {
+			if(parent.tagName && typeof voids[parent.tagName.toLowerCase()] === undef) {
 				parent.appendChild(newEle);
 			}
 		}
