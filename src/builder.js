@@ -80,6 +80,7 @@ function createElement(str, attr) {
 	return ele;
 }
 
+// Set attributes, events and data on a node
 function nodeSpecials(node, obj) {
 	
 	if(!node || !obj) {
@@ -132,7 +133,7 @@ function nodeSpecials(node, obj) {
 	}
 }
 
-// Private method inside here
+// This is the main recursive builder method
 function builder(obj, parent) {
 	var recurse = builder,
 		isArray = (obj && obj.length && typeof obj !== "string"),
