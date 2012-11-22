@@ -21,6 +21,15 @@
 				param:0, script:0, source:0, style:0, track:0, wbr:0
 		};
 
+	// Setup the global call for array build, 'cause if it's not a prepped array, it conflicts
+	// with existing jQuery behaviours - this could be removed on clarification of those.
+	window.BuildArray = function(arr) {
+		var Arr = arr || [];
+		Arr._build = true;
+		return Arr;
+	};
+
+	// After careful testing, this seems the most efficient way to split the string into parts
 	function splitEleStr(str) {
 		var tag, id, classNames, y,
 			hasDot = str.indexOf("."),
@@ -180,7 +189,7 @@
 		// Text node
 		if (typeof obj !== undef && !isObject) {
 			newEle = document.createTextNode(obj);
-			if(parent.tagName && typeof voids[parent.tagName.toLowerCase()] === undef) {
+			if((parent.tagName && typeof voids[parent.tagName.toLowerCase()] === undef) || parent.nodeType === 11) {
 				parent.appendChild(newEle);
 			}
 		}
